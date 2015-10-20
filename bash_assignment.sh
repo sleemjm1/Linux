@@ -28,11 +28,12 @@ do
 
 		if ! grep -i "${username}" /etc/passwd ;
 		then
-			crypt_password=$(perl -e 'print crypt($arg[0], "password")' $password)
-			useradd -d /home/$username -m -s /bin/bash -p $crypt_password $username
+			crypt_password=$(perl -e 'print crypt($ARGV[0], "password")' $password)
+			useradd -d /home/$username -m -s /bin/bash -p$crypt_password $username
 			# need to work out how to add password to user
 			echo "The user has been added."
 			echo ""
+                        echo "Password: $password"
 		else
 			echo "The user already exists, not creating again..."
 			echo ""

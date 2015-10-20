@@ -12,10 +12,10 @@
 
 # Command Line History (newest to oldest):
 :wq
+:q
 ://nz.archive.ubuntu.com/ubuntu/ vivid-updates/main wireless-regdb all 2014.11.18-1ubuntu1~ubuntu15.04.1 [8,290 B]
 ://nz.archive.ubuntu.com/ubuntu/ vivid-updates/main linux-firmware all 1.143.3 [24.8 MB]
 ://nz.archive.ubuntu.com/ubuntu/ vivid-updates/main biosdevname amd64 0.4.1-0ubuntu7.1 [20.6 kB]
-:q
 :q!
 
 # Search String History (newest to oldest):
@@ -34,27 +34,27 @@
 		
 
 # File marks:
-'0  25  15  ~/delete_users.sh
-'1  3  54  ~/delete_users.sh
-'2  32  63  ~/bash_assignment.sh
-'3  17  6  ~/bash_assignment.sh
-'4  1  0  ~/bash_assignment.sh
-'5  41  6  ~/bash_assignment.sh
+'0  1  0  ~/bash_assignment.sh
+'1  32  47  ~/bash_assignment.sh
+'2  25  15  ~/delete_users.sh
+'3  3  54  ~/delete_users.sh
+'4  17  6  ~/bash_assignment.sh
+'5  42  6  ~/bash_assignment.sh
 '6  8  3  ~/bash_assignment.sh
 '7  12  8  ~/bash_assignment.sh
 '8  1  0  ~/.vimrc
 '9  2  0  ~/bash_assignment.sh
 
 # Jumplist (newest first):
+-'  1  0  ~/bash_assignment.sh
+-'  32  47  ~/bash_assignment.sh
 -'  25  15  ~/delete_users.sh
 -'  1  0  ~/delete_users.sh
 -'  3  54  ~/delete_users.sh
--'  32  63  ~/bash_assignment.sh
--'  42  0  ~/bash_assignment.sh
+-'  43  0  ~/bash_assignment.sh
 -'  2  0  ~/bash_assignment.sh
--'  1  0  ~/bash_assignment.sh
 -'  17  6  ~/bash_assignment.sh
--'  41  6  ~/bash_assignment.sh
+-'  42  6  ~/bash_assignment.sh
 -'  8  3  ~/bash_assignment.sh
 -'  12  8  ~/bash_assignment.sh
 -'  1  0  ~/.vimrc
@@ -143,9 +143,36 @@
 -'  1  0  ~/bash_assignment
 -'  1  0  ~/bash_assignment
 -'  1  0  ~/.vimrc
--'  32  63  ~/bash_assignment.sh
 
 # History of marks within files (newest to oldest):
+
+> ~/bash_assignment.sh
+	"	1	0
+	^	32	48
+	.	32	48
+	+	2	0
+	+	12	8
+	+	8	3
+	+	21	30
+	+	27	12
+	+	26	28
+	+	43	1
+	+	42	6
+	+	14	0
+	+	17	6
+	+	43	0
+	+	20	59
+	+	20	0
+	+	12	0
+	+	14	0
+	+	15	22
+	+	13	0
+	+	31	72
+	+	32	48
+	+	36	49
+	+	32	48
+	+	31	45
+	+	32	48
 
 > ~/delete_users.sh
 	"	25	15
@@ -161,30 +188,6 @@
 	+	12	1
 	+	17	23
 	+	25	15
-
-> ~/bash_assignment.sh
-	"	32	63
-	^	32	64
-	.	32	63
-	+	2	0
-	+	12	8
-	+	8	3
-	+	21	30
-	+	27	12
-	+	26	28
-	+	42	1
-	+	41	6
-	+	14	0
-	+	17	6
-	+	42	0
-	+	20	59
-	+	20	0
-	+	12	0
-	+	14	0
-	+	15	22
-	+	13	0
-	+	31	72
-	+	32	63
 
 > ~/.vimrc
 	"	1	0
