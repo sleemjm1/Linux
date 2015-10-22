@@ -150,3 +150,11 @@ cat users.txt
 sudo vi bash_assignment.sh 
 ls
 sudo vi bash_assignment.sh 
+ps
+sudo apt-get openssh
+sudo apt-get install openssh
+ls
+sudo vi bash_assignment.sh 
+sudo bash delete_users.sh 
+sudo bash bash_assignment.sh kate.ict.op.ac.nz/~cfrantz/users.txt
+exit
