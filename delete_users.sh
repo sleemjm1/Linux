@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# This file will delete all users from the URL provided
+# This file will delete all users from the file name  provided
 
 filename='users.txt'
 IFS=";"
