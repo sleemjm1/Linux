@@ -158,3 +158,93 @@ sudo vi bash_assignment.sh
 sudo bash delete_users.sh 
 sudo bash bash_assignment.sh kate.ict.op.ac.nz/~cfrantz/users.txt
 exit
+ls
+sudo vi bash_assignment.sh
+sudo bash delete_users.sh 
+sudo bash bash_assignment.sh kate.ict.op.ac.nz/~cfrantz/users.txt
+git add .
+sudo git add .
+sudo git commit -m "Few more scripts - count_pending_users function created."
+sudo git push origin master
+sudo vi bash_assignment.sh
+ls
+sudo vi gen_usernames
+sudo vi gen_usernames.sh
+sudo bash count_users.sh users.txt 
+ls
+sudo bash delete_users.sh 
+ls
+sudo bash count_users.sh users.txt 
+sudo vi count_users.sh 
+cat users.txt 
+sudo vi users.txt 
+sudo bash bash_assignment.sh kate.ict.op.ac.nz/~cfrantz/users.txt
+cat users.txt 
+sudo bash delete_users.sh 
+ls
+sudo vi gen_usernames.sh 
+sudo bash gen_usernames.sh users.txt
+sudo bash gen_usernames.sh 
+sudo vi gen_usernames.sh 
+sudo bash gen_usernames.sh users.txt
+sudo vi gen_usernames.sh 
+sudo bash gen_usernames.sh users.txt
+sudo rm count_users.sh 
+sudo bash gen_usernames.sh users.txt
+sudo bash bash_assignment.sh kate.ict.op.ac.nz/~cfrantz/users.txt
+sudo bash gen_usernames.sh users.txt
+sudo vi gen_usernames.sh 
+sudo bash gen_usernames.sh users.txt
+sudo vi gen_usernames.sh 
+sudo vi set_up_user.sh
+sudo bash set_up_user.sh joe.sleeman@git.com 20/09/1990
+sudo vi set_up_user.sh
+ls
+sudo vi bash_assignment.sh 
+sudo bash delete_users.sh 
+sudo bash bash_assignment.sh kate.ict.op.ac.nz/~cfrantz/users.txt
+sudo vi bash_assignment.sh 
+sudo bash bash_assignment.sh kate.ict.op.ac.nz/~cfrantz/users.txt
+dc /home
+ls
+cd /home
+ls
+cd joe/
+sudo vi bash_assignment.sh 
+sudo bash bash_assignment.sh kate.ict.op.ac.nz/~cfrantz/users.txt
+sudo vi bash_assignment.sh 
+sudo bash bash_assignment.sh kate.ict.op.ac.nz/~cfrantz/users.txt
+sudo vi bash_assignment.sh 
+sudo bash bash_assignment.sh kate.ict.op.ac.nz/~cfrantz/users.txt
+sudo vi bash_assignment.sh 
+sudo bash bash_assignment.sh kate.ict.op.ac.nz/~cfrantz/users.txt
+sudo vi bash_assignment.sh 
+sudo bash bash_assignment.sh kate.ict.op.ac.nz/~cfrantz/users.txt
+sudo vi bash_assignment.sh 
+sudo bash bash_assignment.sh kate.ict.op.ac.nz/~cfrantz/users.txt
+sudo vi bash_assignment.sh 
+sudo bash bash_assignment.sh kate.ict.op.ac.nz/~cfrantz/users.txt
+sudo vi bash_assignment.sh 
+sudo bash bash_assignment.sh kate.ict.op.ac.nz/~cfrantz/users.txt
+sudo vi bash_assignment.sh 
+sudo bash bash_assignment.sh kate.ict.op.ac.nz/~cfrantz/users.txt
+sudo vi bash_assignment.sh 
+sudo bash bash_assignment.sh kate.ict.op.ac.nz/~cfrantz/users.txt
+sudo vi bash_assignment.sh 
+sudo bash bash_assignment.sh kate.ict.op.ac.nz/~cfrantz/users.txt
+sudo vi bash_assignment.sh 
+sudo bash bash_assignment.sh kate.ict.op.ac.nz/~cfrantz/users.txt
+sudo vi bash_assignment.sh 
+sudo bash bash_assignment.sh kate.ict.op.ac.nz/~cfrantz/users.txt
+sudo vi bash_assignment.sh 
+sudo bash bash_assignment.sh kate.ict.op.ac.nz/~cfrantz/users.txt
+sudo vi bash_assignment.sh 
+sudo bash bash_assignment.sh kate.ict.op.ac.nz/~cfrantz/users.txt
+sudo vi bash_assignment.sh 
+ls
+sudo vi gen_usernames.sh 
+sudo vi bash_assignment.sh 
+sudo bash bash_assignment.sh kate.ict.op.ac.nz/~cfrantz/users.txt
+sudo vi bash_assignment.sh 
+ls
+sudo vi set_up_user.sh 
