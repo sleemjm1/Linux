@@ -19,7 +19,7 @@ do
 			echo "No such user exists."
 		else
 			echo "Deleting user: $username"
-			userdel -rf $username
+			userdel -rf $username &> /dev/null
 		fi
 	fi
 done < users.txt

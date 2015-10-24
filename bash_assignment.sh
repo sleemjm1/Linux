@@ -13,7 +13,7 @@
 #	! Links
 #	! Errors + feedback to user 
 #	! Alias - all users - off (systemctl poweroff)
-#	! Log file
+#	! Log file => COMPLETE
 #	! Shared folder permissions
 #	! Functions
 
@@ -28,9 +28,48 @@ then
 	read URL
 fi
 
-wget -O $filename $URL
+#wget -O $filename $URL
 
 # Functions begin
+
+# Checking for a valid .txt URI. Then check for if this is a local file, or if we
+# will need to use wget to download the file. This is not as robust as it could be,
+# it is difficult to find a good regex for checking valid URLs
+# Params: URI
+
+check_regex()
+{
+	regex="(\w+)\.(txt$)" 	# Check to see if URI ends in ".txt"
+	URI=$1
+
+	if [[ "$URI" =~ $regex ]]
+	then
+		# True
+		return 0
+	else
+		# False
+		return 1
+	fi
+}
+
+# Setting up CSV - Is the URI a file on our system, or is it a URL that we will
+# need to use wget on?
+# Params: URI, filename
+# Returns: filename of CSV 
+
+set_up_csv()
+{
+	local l_URI=$1
+	local l_filename=$2
+
+	if [ -e $l_URI ]	 # If this is a file on our system
+	then
+		echo $l_URI
+	else			 # It must be a URL, use wget
+		wget -O $l_filename $l_URI
+		echo $l_filename
+	fi
+}
 
 # pending_users() will count the pending and return that value
 
@@ -106,6 +145,15 @@ check_user_exists()
 	fi
 }
 
+# Create alias off that allows powering off without entering an password
+# (systemctl poweroff). Loaded upon every login.
+# Params: $username 
+set_up_alias()	#ToDo !!! NOT WORKING !!!
+{
+	local l_username=$1
+	echo alias off="systemctl poweroff" >> /home/$l_username/.bashrc
+}
+
 # Add group will create a group if it doesn't already exist, and add the
 # specified user to that group
 # Paramaters: $group $username
@@ -125,8 +173,37 @@ add_group()
 	echo "Adding $l_username to group: $l_group"	
 }
 
+# Log the success/failure of user creation to /log.txt
+# Include date information that indicates the script runtime
+# Params: username, creation_status
+
+log_creation()
+{
+	l_username=$1
+	l_creation_status=$2
+	l_date=$(date)
+	if [[ $l_creation_status == 1 ]]
+	then
+		echo $l_date: creation for $l_username was a success >> /log.txt
+	else
+		echo $l_date: creation of user failed >> /log.txt
+	fi	
+}
+
 
 # End of functions
+
+check_regex $URL
+regex_result=$?
+
+if [[ $regex_result == 0 ]]
+then	# Our URL has passed the regex test
+	filename=$(set_up_csv $URL $filename)
+else	# Our URL has not passed the regex test
+	echo "Invalid URL/Filename. Shutting down script."
+	echo ""
+	exit 1
+fi
 
 pending_users
 pending_count=$?
@@ -165,6 +242,8 @@ then
 			# If our user doesn't already exist
 			then
 				add_user $username $password
+				creation_status=1
+				log_creation $username $creation_status
 				
 				# Groups are tricky. Sometimes, a user will belong to more than one group.
 				# Sometimes, a user will not belong to a group at all. We will try to account
@@ -190,6 +269,8 @@ then
 					echo "_ _ _ _ _ _ _ _ _ _ _ _ _ _ _"
 				fi
 			else
+				creation_status=0
+				log_creation $creation_status $username
 				echo "The user already exists, not creating again..."
 				echo ""
 			fi

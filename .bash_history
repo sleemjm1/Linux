@@ -248,3 +248,68 @@ sudo bash bash_assignment.sh kate.ict.op.ac.nz/~cfrantz/users.txt
 sudo vi bash_assignment.sh 
 ls
 sudo vi set_up_user.sh 
+ls
+sudo bash delete_users.sh 
+sudo bash bash_assignment.sh kate.ict.op.ac.nz/~cfrantz/users.txt
+sudo bash delete_users.sh 
+sudo bash bash_assignment.sh kate.ict.op.ac.nz/~cfrantz/users.txt
+sudo bash delete_users.sh 
+sudo bash bash_assignment.sh kate.ict.op.ac.nz/~cfrantz/users.txt
+cd /
+ls
+cd home/
+ls
+cd joe/
+ls
+sudo bash delete_users.sh 
+cat /etc/users
+cat /etc/user
+cat delete_users.sh 
+cat /etc/passwd
+sudo vi bash_assignment.sh 
+sudo bash bash_assignment.sh kate.ict.op.ac.nz/~cfrantz/users.txt
+sudo bash delete_users.sh 
+sudo vi bash_assignment.sh 
+sudo bash bash_assignment.sh kate.ict.op.ac.nz/~cfrantz/users.txt
+sudo bash delete_users.sh 
+sudo bash bash_assignment.sh kate.ict.op.ac.nz/~cfrantz/users.txt
+sudo bash delete_users.sh 
+sudo bash bash_assignment.sh kate.ict.op.ac.nz/~cfrantz/users.txt
+sudo bash delete_users.sh 
+sudo bash bash_assignment.sh kate.ict.op.ac.nz/~cfrantz/users.txt
+sudo bash delete_users.sh 
+sudo bash bash_assignment.sh kate.ict.op.ac.nz/~cfrantz/users.txt
+ls
+sudo bash bash_assignment.sh 
+sudo bash delete_users.sh 
+sudo bash bash_assignment.sh kate.ict.op.ac.nz/~cfrantz/users.txt
+cat users.txt 
+sudo vi bash_assignment.sh 
+quit
+exit
+sudo vi bash_assignment.sh 
+cat users.txt 
+sudo bash bash_assignment.sh kate.ict.op.ac.nz/~cfrantz/users.txt
+sudo bash delete_users.sh 
+sudo bash bash_assignment.sh kate.ict.op.ac.nz/~cfrantz/users.txt
+sudo vi bash_assignment.sh 
+exit
+cd ..
+ls
+cd lechan/
+cd ..
+cat ~/.bashrc
+cd ~/.bashrc
+cd ~/
+ls
+sudo vi /bashrc
+sudo vi .bashrc 
+logout
+ls
+ps
+sudo /etc/init.d/ssh restart
+sudo service ssh restart
+sudo service ssh start
+sudo service openssh-server restart
+sudo /etc/init.d/ssh restart
+sudo reboot

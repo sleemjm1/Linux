@@ -2,14 +2,21 @@
 
 # link tester experiment
 
-regex='(https?|ftpfile)://[-A-Za-z0-9\+&@#/%?=~_|!:,.;]*[-A-Aa-z0-9\+&@#?%=~_|]'
+regex="(\w+)\.(txt$)"
 
-string=$1
+URL=$1
 
-if [ $string =~ $regex ]
+if [[ "$URL" =~ $regex ]]
 then
 	echo "Link valid"
 else
 echo
 	echo "Link invalid"
+fi
+
+if [ ! -e $URL ]
+then
+	echo "This is a web URL"
+else
+	echo "This is a local file"
 fi
