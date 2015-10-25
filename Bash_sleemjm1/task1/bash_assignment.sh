@@ -28,14 +28,14 @@ then
 	read URL
 fi
 
-#wget -O $filename $URL
-
 # Functions begin
 
 # Checking for a valid .txt URI. Then check for if this is a local file, or if we
 # will need to use wget to download the file. This is not as robust as it could be,
-# it is difficult to find a good regex for checking valid URLs
+# it is difficult to find a good regex for checking valid URLs. Also, we need to check
+# the CSV - it may indeed be a .txt file, but not in the format we are expecting.
 # Params: URI
+# Returns: 0 - True, 1 - False
 
 check_regex()
 {
@@ -53,7 +53,7 @@ check_regex()
 }
 
 # Setting up CSV - Is the URI a file on our system, or is it a URL that we will
-# need to use wget on?
+# need to use wget on? We will peform these checks, and act accordingly.
 # Params: URI, filename
 # Returns: filename of CSV 
 
@@ -71,7 +71,8 @@ set_up_csv()
 	fi
 }
 
-# pending_users() will count the pending and return that value
+# Counting the pending users that aren't currently in our system.
+# Returns: Total pending users
 
 pending_users()			
 {
@@ -93,7 +94,10 @@ pending_users()
 	return $l_user_count	
 }
 
-# add_user() function: Pass in username, password - order matters: add_user($username, $password)
+# Adding user. This will generate a user based on the params passed in to it. It will echo to the
+# console the username and the corresponding password. The users generated with this function
+# will be forced to change their password on first login.
+# Params: username, password
 
 add_user()		
 {
@@ -107,8 +111,9 @@ add_user()
 	echo "With password: $l_password"
 }
 
-# set_up_username will set up a user's username from their email
-# set_up_username($email)
+# Set up username. This function will generate a username based on the specifications of the
+# assignment brief.
+# Params: Email
 
 set_up_username() 
 {
@@ -119,7 +124,9 @@ set_up_username()
 	echo $l_username
 }
 
-# set_up_password will set up a user's password
+# Set up password. Set up a user's password based on the specifications of the assignment
+# brief.
+# Params: Date
 
 set_up_password()
 {
@@ -130,7 +137,8 @@ set_up_password()
 }
 
 # check_user_exists will check if a user already exists in /etc/passwd
-# pass in username
+# Params: username
+# Returns: 0 - True, 1 - False
 
 check_user_exists()
 {
@@ -147,7 +155,8 @@ check_user_exists()
 
 # Create alias off that allows powering off without entering an password
 # (systemctl poweroff). Loaded upon every login.
-# Params: $username 
+# Params: username
+ 
 set_up_alias()	#ToDo !!! NOT WORKING !!!
 {
 	local l_username=$1
@@ -156,7 +165,7 @@ set_up_alias()	#ToDo !!! NOT WORKING !!!
 
 # Add group will create a group if it doesn't already exist, and add the
 # specified user to that group
-# Paramaters: $group $username
+# Params: group, username
 
 add_group()
 {
