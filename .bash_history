@@ -313,3 +313,4 @@ sudo service ssh start
 sudo service openssh-server restart
 sudo /etc/init.d/ssh restart
 sudo reboot
+exit

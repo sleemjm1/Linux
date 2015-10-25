@@ -5,14 +5,14 @@
 # Assignment One
 
 # To do:
-#	! Regex checking on URI
+#	! Regex checking on URI => PARTIALLY COMPLETE
 #	! Count pending users (not sure how complex this has to be) => COMPLETE
 #	* Groups (maybe not right) => COMPLETE
 #	! Uploading
 #	! Textfile
 #	! Links
 #	! Errors + feedback to user 
-#	! Alias - all users - off (systemctl poweroff)
+#	! Alias - all users - off (systemctl poweroff)	=> PROVING DIFFICULT
 #	! Log file => COMPLETE
 #	! Shared folder permissions
 #	! Functions
@@ -75,22 +75,22 @@ set_up_csv()
 
 pending_users()			
 {
-	local user_count=0
+	local l_user_count=0
 	while read email date group shared
 	do
 		if [ ! $email == "e-mail" ]
 		then
-			name=${email%.*..}
-			last_name=${name#*.}
-			username=${last_name:0:3}${name:0:3}
+			l_name=${email%.*..}
+			l_last_name=${l_name#*.}
+			l_username=${l_last_name:0:3}${l_name:0:3}
 
-			if ! grep -i -q "${username}" /etc/passwd ;
+			if ! grep -i -q "${l_username}" /etc/passwd ;
 			then
-				((user_count+=1))
+				((l_user_count+=1))
 			fi
 		fi
 	done < $filename
-	return $user_count	
+	return $l_user_count	
 }
 
 # add_user() function: Pass in username, password - order matters: add_user($username, $password)
