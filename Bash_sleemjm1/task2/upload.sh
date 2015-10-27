@@ -5,7 +5,7 @@
 
 folder=$1
 archive_name=$2
-destination="sba@10.25.1.76:/SBAs/bash/subtest" # Hard-coded (yuck)
+destination="sba@10.25.1.76:/SBAs/bash/submissions" # Hard-coded (yuck)
 port=22000					# Hard-coded
 
 if [ -z "$folder" ] || [ ! -d "$folder" ] 	# Check if user has entered folder, and if
