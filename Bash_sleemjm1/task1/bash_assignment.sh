@@ -7,15 +7,15 @@
 # To do:
 #	! Regex checking on URI => PARTIALLY COMPLETE
 #	! Count pending users (not sure how complex this has to be) => COMPLETE
-#	* Groups (maybe not right) => COMPLETE
-#	! Uploading
-#	! Textfile
-#	! Links
-#	! Errors + feedback to user 
+#	! Groups (maybe not right) => COMPLETE
+#	! Uploading => COMPLETE
+#	! Textfile => COMPLETE
+#	! Links => COMPLETE
+#	! Errors + feedback to user => 75% COMPLETE
 #	! Alias - all users - off (systemctl poweroff)	=> PROVING DIFFICULT
 #	! Log file => COMPLETE
-#	! Shared folder permissions
-#	! Functions
+#	! Shared folder permissions => COMPLETE
+#	! Functions => COMPLETE
 
 URL=$1
 IFS=";"
@@ -65,9 +65,21 @@ set_up_csv()
 	if [ -e $l_URI ]	 # If this is a file on our system
 	then
 		echo $l_URI
-	else			 # It must be a URL, use wget
-		wget -O $l_filename $l_URI
-		echo $l_filename
+	else			 # It may be a URL, use wget
+		if wget -q "$l_URI"; 
+			then
+				wget $l_URI -O $l_filename
+				echo $l_filename
+			else
+				return 1
+		fi
+		# This is not robust enough, because if wget doesn't work, I can't 
+		# figure out a way to exit the script from within this function. I can
+		# only exit this function, but the script will still proceed. This is 
+		# most likely because of the way I have set it up.
+
+		# Another problem that I haven't managed to fix - The previous users.txt 
+		# file will be changed to a new name, eg users.txt.1
 	fi
 }
 
@@ -157,10 +169,11 @@ check_user_exists()
 # (systemctl poweroff). Loaded upon every login.
 # Params: username
  
-set_up_alias()	#ToDo !!! NOT WORKING !!!
+set_up_alias()	# !!! NOT WORKING !!! - User will still have to authenticate.
 {
 	local l_username=$1
-	echo alias off="systemctl poweroff" >> /home/$l_username/.bashrc
+	echo alias off="'systemctl poweroff'" >> /home/$l_username/.bashrc
+	#echo alias off="'systemctl poweroff'" >> /etc/bash.bashrc
 }
 
 # Add group will create a group if it doesn't already exist, and add the
@@ -169,8 +182,8 @@ set_up_alias()	#ToDo !!! NOT WORKING !!!
 
 add_group()
 {
-	l_group=$1
-	l_username=$2
+	local l_group=$1
+	local l_username=$2
 
 	if ! grep -i -q "${l_group}" /etc/group ;
 	# if the group doesn't already exist
@@ -181,6 +194,7 @@ add_group()
 	usermod -a -G $l_group $l_username
 	echo "Adding $l_username to group: $l_group"	
 }
+
 
 # Log the success/failure of user creation to /log.txt
 # Include date information that indicates the script runtime
@@ -199,8 +213,23 @@ log_creation()
 	fi	
 }
 
+# My not so elegant way of setting up the shared folders and groups. 
+# Setting 770 permissions (read, write, execute for owner + owner's group.
+
+set_up_shared()
+{
+	add_group /staffData root
+	chmod 770 /staffData
+	chown root:/staffData /staffData/
+
+	add_group /visitorData root
+	chmod 770 /visitorData
+	chown root:/visitorData /visitorData/
+}
 
 # End of functions
+
+set_up_shared
 
 check_regex $URL
 regex_result=$?
@@ -208,6 +237,11 @@ regex_result=$?
 if [[ $regex_result == 0 ]]
 then	# Our URL has passed the regex test
 	filename=$(set_up_csv $URL $filename)
+	file_return=$?
+	if [[ file_return == 1 ]]
+	then
+		exit 1
+	fi
 else	# Our URL has not passed the regex test
 	echo "Invalid URL/Filename. Shutting down script."
 	echo ""
@@ -275,7 +309,6 @@ then
 						add_group $i $username 
 					done				
 					IFS=";"
-					echo "_ _ _ _ _ _ _ _ _ _ _ _ _ _ _"
 				fi
 			else
 				creation_status=0
@@ -289,6 +322,14 @@ then
 				mkdir $shared
 				echo "Creating directory: $shared"		
 			fi
+			set_up_alias $username
+			if [ $shared ] && ! [ -z $shared ] ;
+			then
+				add_group $shared $username	# Adding user to further group based on their
+							    	# shared directories.
+				ln -s $shared /home/$username	# soft link for their shared directory.
+			fi
+			echo "_ _ _ _ _ _ _ _ _ _ _ _ _ _ _"
 		
 		fi
 	done < $filename

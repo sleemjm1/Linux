@@ -7,11 +7,7 @@ a series of scripts used to complete the tasks for this assignment.
 
 task1:
 
-There are 3 files & 1 sub-directory in this directory. The directory is named test_files, and has a bunch
-of simple bash scripts that I used when experimenting with creating various functions within the main 
-bash_assignment script. These scripts are not important as they were just used for testing purposes. So
-I am not going to describe what they do. If you are interested, there are comments explaining the scripts 
-in the scripts themselves.
+There are 3 files in this directory. bash_assignment.sh, delete_users.sh, and users.txt
 
 Below is a brief description of the files in the task1 directory:
 
@@ -42,6 +38,9 @@ who it is deleting. This script requires sudo prefix.
 
 Example way to run the script: sudo bash delete_users.sh
 
+NOTE: If there is no "users.txt" file in the current directory, it will not run. This script is not very 
+robust as I have just been using it for the testing of the main bash_assignment.sh script.
+
 
 users.txt:
 
@@ -55,7 +54,7 @@ this file if you want to see the structure of the CSV, or information related to
 task2:
 
 There is only 1 file in this directory, and it is the script which is used to compress & upload a directory
-to a hard-coded destination. You can pass it in the folder you with and the name you want to give the archive,
+to a hard-coded destination. You can pass it in the folder you wish and the name you want to give the archive,
 or, the script will prompt you to enter them. This script makes use of the tar command, as well as the scp
 command in order to copy the directory across to the destination. This script requires sudo prefix.
 
